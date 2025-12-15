@@ -1,0 +1,17 @@
+{
+  "name": "video-analyzer-v1",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace=@video-analyzer/web run dev",
+    "build:web": "npm --workspace=@video-analyzer/web run build",
+    "start:web": "npm --workspace=@video-analyzer/web run start",
+    "dev:worker": "npm --workspace=@video-analyzer/worker run dev",
+    "build:worker": "npm --workspace=@video-analyzer/worker run build",
+    "start:worker": "npm --workspace=@video-analyzer/worker run start"
+  }
+}
