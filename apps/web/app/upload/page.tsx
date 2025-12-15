@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { supabase, VIDEO_BUCKET_NAME } from '@/lib/supabaseClient'
+import { getSupabaseClient, VIDEO_BUCKET_NAME } from '@/lib/supabaseClient'
 
 export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null)
@@ -10,6 +10,7 @@ export default function UploadPage() {
 
   async function handleUpload() {
     if (!file) return
+    const supabase = getSupabaseClient()
     setIsUploading(true)
     setStatus('Preparing upload...')
 
