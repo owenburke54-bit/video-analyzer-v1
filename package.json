@@ -8,10 +8,15 @@
   ],
   "scripts": {
     "dev:web": "npm --workspace=@video-analyzer/web run dev",
+    "dev:web:3001": "npm --workspace=@video-analyzer/web run dev -- -p 3001",
     "build:web": "npm --workspace=@video-analyzer/web run build",
     "start:web": "npm --workspace=@video-analyzer/web run start",
     "dev:worker": "npm --workspace=@video-analyzer/worker run dev",
     "build:worker": "npm --workspace=@video-analyzer/worker run build",
-    "start:worker": "npm --workspace=@video-analyzer/worker run start"
+    "start:worker": "npm --workspace=@video-analyzer/worker run start",
+    "dev": "concurrently -n web,worker -c blue,green \"npm run dev:web:3001\" \"npm run dev:worker\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
