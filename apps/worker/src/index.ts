@@ -1,13 +1,16 @@
 import 'dotenv/config'
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.SUPABASE_URL!
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-const videoBucket = process.env.VIDEO_BUCKET_NAME || 'video-analyzer'
+// Support both legacy and new key names
+const supabaseUrl =
+  process.env.SUPABASE_URL || process.env.SUPABASE_PROJECT_URL
+const serviceRoleKey =
+  process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+const videoBucket = process.env.VIDEO_BUCKET_NAME || 'video-analyzer-v1'
 
 if (!supabaseUrl || !serviceRoleKey) {
   // eslint-disable-next-line no-console
-  console.error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
+  console.error('Missing SUPABASE_URL (or SUPABASE_PROJECT_URL) or SUPABASE_SECRET_KEY')
   process.exit(1)
 }
 
